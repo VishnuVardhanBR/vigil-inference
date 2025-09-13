@@ -1,17 +1,54 @@
-# Electron Sample (React + Node.js + ONNX Runtime)
+# Toddler Detection Monitoring App
 
-## Structure
-- `frontend/`: React UI (e.g., button triggers inference)
-- `backend/`: Node.js ONNX Runtime logic
+This is a local desktop application built with Electron, React, and a FastAPI (Python) backend for real-time object detection on a video stream.
 
-## How it works
-1. User interacts with the UI (e.g., clicks a button)
-2. Frontend calls backend Node.js function (via IPC or API) to run ONNX inference
-3. Result is shown in the UI
+## Prerequisites
 
-## Build & Run
-- `npm install` in `electron-app/`
-- `npm start` or use `build.ps1` to package as MSIX
+-   [Node.js](https://nodejs.org/) (v18 or later)
+-   [Python](https://www.python.org/) (v3.8 or later) with `pip`
 
-## MS Store
-- Test on X-Elite, then submit MSIX to Microsoft Store
+## Setup Instructions
+
+1.  **Clone the repository:**
+    ```bash
+    git clone <your-repo-url>
+    cd toddler-monitor-app
+    ```
+
+2.  **Install Node.js dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Set up the Python environment:**
+    It is highly recommended to use a virtual environment.
+    ```bash
+    # Create a virtual environment
+    python -m venv backend/venv
+
+    # Activate it
+    # On Windows:
+    backend\venv\Scripts\activate
+    # On macOS/Linux:
+    source backend/venv/bin/activate
+    ```
+
+4.  **Install Python dependencies:**
+    ```bash
+    pip install -r backend/requirements.txt
+    ```
+
+5.  **Add Model and Video:**
+    -   Place your trained YOLO model (e.g., `your_model.pt`) inside the `/backend` folder.
+    -   Place your test video file (e.g., `test_video.mp4`) inside the `/backend` folder.
+    -   **IMPORTANT:** Open `backend/main.py` and update the `MODEL_PATH` and `VIDEO_PATH` variables to match your filenames.
+
+## Running the Application (Development)
+
+This command will start the Python backend, the React frontend dev server, and the Electron application all at once.
+
+```bash
+npm run dev
+```
+
+The application window should appear, connect to the backend, and start streaming the processed video.
