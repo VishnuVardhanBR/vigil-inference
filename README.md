@@ -11,7 +11,7 @@ This is a local desktop application built with Electron, React, and a FastAPI (P
 
 1.  **Clone the repository:**
     ```bash
-    git clone <your-repo-url>
+    git clone https://github.com/VishnuVardhanBR/vigil-inference
     cd toddler-monitor-app
     ```
 
